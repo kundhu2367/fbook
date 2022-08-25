@@ -1,0 +1,79 @@
+<div *ngIf="noUsers" class="justify-content-center">
+    <div class="card p-3">
+        <div class="align-items-center">
+            <div class="col-12 mb-1" *ngIf="isFriendList">
+                <span class="card-text h6" *ngTemplateOutlet="friendList_noUser_msg"></span>
+            </div>
+            <div class="col-12 mb-1" *ngIf="isNetworks">
+                <span class="card-text h6" *ngTemplateOutlet="networks_noUser_msg"></span>
+            </div>
+            <div class="col-12 mb-1" *ngIf="isUserList">
+                <span class="card-text h6" *ngTemplateOutlet="userList_noUser_msg"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngFor="let user of usersData ">
+    <div class="justify-content-center mb-2">
+        <div class="card p-3">
+            <div class="col-3 text-center align-items-center" [ngClass]="{'row me-3': isUserList}">
+                <div *ngIf="user.friendIcon" class="image">
+                    <img [src]="user.friendIcon" alt="profile" class="rounded-circle" width="99">
+                </div>
+                <div *ngIf="isUserList">
+                    <a routerLink="/settings/{{user.id}}" type="button" class="btn btn-success"> <i class="bi bi-pencil-square px-2"></i> </a>
+                </div>
+                <input type="hidden" value="{{user}}" />
+            </div>
+            <div class="col-9 row align-items-center">
+                <div class="col-12 col-sm-8">
+                    <h4>{{user.firstName | titlecase}} {{user.lastName | titlecase}} <span *ngIf="user.gender">({{user.gender | titlecase }})</span> </h4>
+                    <h6 *ngIf="isUserList && user.profession">{{user.profession}}</h6>
+                    <h6 *ngIf="user.email">{{user.email}}</h6>
+                    <h6 *ngIf="user.dob">{{user.dob | date : 'MMM d, y - h:mm:ss a'}}</h6>
+                </div>
+                <div class="col-12 col-sm-4 mb-1" *ngIf="isFriendList">
+                    <div *ngTemplateOutlet="friendList_temp; context:{user: user}"></div>
+                </div>
+                <div class="col-12 col-sm-4 mb-1" *ngIf="isNetworks">
+                    <div *ngTemplateOutlet="networks_temp; context:{user: user}"></div>
+                </div>
+                <div class="col-12 col-sm-4 mb-1" *ngIf="isUserList">
+                    <div *ngTemplateOutlet="userList_temp; context:{user: user}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <ng-template let-user="user" #friendList_temp>
+        <button *ngIf="user.isRequest" class="btn btn-success me-2 me-sm-0 mb-sm-2 mb-0 mw-85" (click)="primaryBtnClick(user)">{{primaryBtnText}}</button>
+        <button *ngIf="user.isRequest" class="btn btn-danger me-2 me-sm-0 mw-85" (click)="secondaryBtnClick(user)">{{secondaryBtnText}}</button>
+        <button *ngIf="user.isFriend" class="btn btn-primary me-2 me-sm-0 mb-sm-2 mb-0 mw-85" disabled>You Are Friend</button>
+    </ng-template>
+
+    <ng-template let-user="user" #networks_temp>
+        <button class="btn btn-success me-2 me-sm-0 mb-sm-2 mb-0 mw-85" *ngIf="user.isNewUser" (click)="primaryBtnClick(user)">{{primaryBtnText}}</button>
+        <button class="btn btn-warning me-2 me-sm-0 mb-sm-2 mb-0 mw-85" *ngIf="user.isRequested">Request Pending</button>
+        <button class="btn btn-danger me-2 me-sm-0 mb-sm-2 mb-0 mw-85" *ngIf="user.isRejected">Request Rejected</button>
+    </ng-template>
+
+    <ng-template let-user="user" #userList_temp>
+        <button class="btn btn-success me-2 me-sm-0 mb-sm-2 mb-0 mw-85" [disabled]="user.isActive" (click)="primaryBtnClick(user)">{{primaryBtnText}}</button>
+        <button [disabled]="!user.isActive" class="btn btn-danger me-2 me-sm-0 mw-85" (click)="secondaryBtnClick(user)">{{secondaryBtnText}}</button>
+    </ng-template>
+
+</div>
+
+<ng-template #friendList_noUser_msg>
+    You do not have any friend yet! Make some friends...
+</ng-template>
+
+<ng-template #networks_noUser_msg>
+    No registered user available in your network ...
+</ng-template>
+
+<ng-template #userList_noUser_msg>
+    No user registered yet...
+</ng-template>

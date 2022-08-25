@@ -1,0 +1,31 @@
+.card {
+    position: relative;
+    flex-direction: row;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    box-shadow: 0 1px 18px 0 rgb(0 0 0 / .09);
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1rem;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #22bf2e;
+    border-color: #22bf2e;
+    &:hover,
+    &:focus {
+        background-color: #1a9824;
+        border-color: #1a9824;
+    }
+}
+
+.mw-85 {
+    min-width: 85px;
+}

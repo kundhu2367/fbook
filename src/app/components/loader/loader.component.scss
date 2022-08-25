@@ -1,0 +1,25 @@
+.loader-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.18);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-timing-function: ease-in-out;
+}
+
+.loader-div {
+    background-color: #22bf2e;
+    color: #fff;
+    border-radius: 10px;
+}
+
+.spinner-border-sm {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-width: .14em;
+}

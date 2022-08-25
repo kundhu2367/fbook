@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row">
+        <ul class="nav nav-tabs nav-fill" role="tablist">
+            <li role="presentation" class="nav-item">
+                <a class="nav-link active" role="tab" data-bs-toggle="tab" href="#profileSettings">Profile</a>
+            </li>
+            <li role="presentation" class="nav-item">
+                <a class="nav-link" role="tab" data-bs-toggle="tab" href="#changePassword">Change Password</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row tab-content">
+        <div role="tabpanel" class="tab-pane p-3 active" id="profileSettings">
+            <fb-settings></fb-settings>
+        </div>
+        <div role="tabpanel" class="tab-pane p-3" id="changePassword">
+            <div class="row justify-content-center card text-center align-items-center">
+                <div class="col-lg-9">
+                    <div class="m-3">
+                        <span class="h2"> Change Password </span>
+                    </div>
+                    <div class="p-5">
+                        <fb-reset-password [isSettingsView]="true"></fb-reset-password>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<div class="container mt-3 error-div">
+    <p *ngIf="!(status && statusText)" class="m-0">Page not found !! return to <a routerLink="/">Home</a></p>
+    <div *ngIf="status && statusText">
+        <p>Error Occured <span class="error"> {{status}}: {{statusText}} </span> !! return to <a routerLink="/">Home</a></p>
+    </div>
+</div>

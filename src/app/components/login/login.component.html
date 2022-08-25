@@ -1,0 +1,38 @@
+<div class="container col-lg-10 col-xl-8 login-sec">
+    <div class="row text-center">
+        <h3 class="login-header"> Login </h3>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-9">
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+                <div class="form-floating mb-3">
+                    <input name="email" formControlName="email" type="email" [ngClass]="{'is-invalid': email?.errors && email?.touched }" class="form-control" id="email" placeholder="abc@example.com">
+                    <label for="email" class="form-label">Email</label>
+                    <div *ngIf="email && email.errors && email.touched">
+                        <p *ngIf="email.errors.required" class="error">Email address is required.</p>
+                        <p *ngIf="email.errors.email" class="error">Email format is not correct.</p>
+                    </div>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input name="password" formControlName="password" type="password" [ngClass]="{'is-invalid': password?.errors && password?.touched }" class="form-control" id="password" placeholder="Password">
+                    <label for="password" class="form-label">Password</label>
+                    <div *ngIf="password && password.errors && password.touched">
+                        <p *ngIf="password.errors.required" class="error">Password is required.</p>
+                    </div>
+                </div>
+
+                <div class="mb-3 d-grid gap-2">
+                    <button [disabled]="form.status === 'INVALID'" type="submit" class="btn btn-success">Login</button>
+                    <a routerLink="/forgetPassword"> <small> <em>Forget Password ?</em> </small> </a>
+                </div>
+                <hr />
+                <div class="mb-3 float-end">
+                    <span>Don't have an account, </span>
+                    <a routerLink="/register" type="button" class="btn-link"><strong>Register Here>></strong></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

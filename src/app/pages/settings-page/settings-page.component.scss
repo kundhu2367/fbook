@@ -1,0 +1,25 @@
+.nav {
+    padding-right: 0px;
+}
+
+.nav-link {
+    color: #22bf2e;
+}
+
+.nav-tabs .nav-link.active,
+.nav-tabs .show>.nav-link {
+    color: #fff;
+    background-color: #22bf2e;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    box-shadow: 0 6px 18px 0 rgb(0 0 0 / .09);
+}
